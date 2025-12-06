@@ -26,7 +26,7 @@ int averageScore = sum/n;
 if(averageScore >= 70);
    System.out.print("Execellent");
 
-if(averageScore > 60 && averageScore < 70)
+if(averageScore >= 60 && averageScore < 70)
    System.out.print("Very Good");
 
 if(averageScore >= 45 && averageScore < 60);
