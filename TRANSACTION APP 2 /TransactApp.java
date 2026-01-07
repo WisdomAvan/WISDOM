@@ -12,7 +12,7 @@ public class TransactApp{
 
     double depositedAmount =0;
     double totalBalance =0;
-//    double withrawalAmount;
+
 while(true){    
     String transactionMenu = """
             
@@ -64,7 +64,7 @@ while(true){
                         break;
                         }
                  
-                    }//while brace
+                    }
 
             }
         case 2-> {
@@ -103,9 +103,9 @@ while(true){
                       
                     }
 
-         }//while brace
+         }
 
-} // case 2 brace
+} 
 
         case 3->{
 
@@ -149,9 +149,9 @@ while(true){
 
                         }
 
-                }//switch brace
-                
-            }// overall while loop
+                }
+               
+            }
 
         }
 
