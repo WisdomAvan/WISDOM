@@ -1,0 +1,19 @@
+public class TaskThree{
+
+    public static void main(String [] args){
+            int book= 10;
+        for(int count=1; count< 10; count+=2){
+
+            
+            System.out.print(count);
+
+
+
+}
+
+
+
+
+    }
+
+}

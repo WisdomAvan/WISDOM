@@ -1,8 +1,24 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+
+
 public class Ecommerce {
 
-    public static void main(String [] args){
+     static double subTotal =0;
+     static String moreItem="yes";
+     static double discount=0;
+     static int count = 0;
+     static String nameOfCashier="";
+
+    static ArrayList <String > nameOfItem = new ArrayList<>();
+
+    static ArrayList<Double> pricePerUnit = new ArrayList<>();
+
+    static ArrayList<Integer> quantityOfItem = new ArrayList<>();
+
+
+    
+public static void main(String [] args){
 
         Scanner obtain = new Scanner(System.in);
 
@@ -13,21 +29,13 @@ public class Ecommerce {
         String time = obtain.nextLine();
 
         System.out.print("Enter Customer's Name: ");
-        String name = obtain.nextLine();
+        String name = obtain.nextLine();  
 
-    ArrayList <String > nameOfItem = new ArrayList<>();
+        toGetPriceAndItemsFromTheArray(
+        
+}
 
-    ArrayList<Double> pricePerUnit = new ArrayList<>();
-
-    ArrayList<Integer> quantityOfItem = new ArrayList<>();
-    
-      
-        double subTotal =0;
-        String moreItem="yes";
-        double discount=0;
-        int count = 0;
-       String nameOfCashier="";
-
+public static double toGetPriceAndItemsFromTheArray(){ 
         while(true){
 
         System.out.print("Enter item name");
@@ -44,7 +52,7 @@ public class Ecommerce {
         subTotal += pricePerUnit.get(count) * quantityOfItem.get(count);
                     
         
-        System.out.print("Add More Items yes/No: ");
+        System.out.print("Would You Like To Add More Items yes/No: ");
         moreItem = obtain.nextLine(); 
       
 
@@ -58,26 +66,40 @@ public class Ecommerce {
         nameOfCashier = obtain.nextLine();
         break;
             
-        }
+                }
             count++;
-}
+        }
+    return subTotal;
+ }
 
-       
-        
-
+      
+public static double toKnowTheDiscountPrice(double discount){
         double discountPercentage = discount / 100; 
 
+        return discountPercentage;
+}
+
+
+public static double toKnowThePriceDiscount(double subTotal , double discountPercentage){
         double discountPrice = subTotal * discountPercentage;
-    
-                
-        double vatPrice = subTotal * 0.075;
+        return discountPrice;
+    }
        
+
+public static double toKnowTheVAtPrice(double subTotal){         
+        double vatPrice = subTotal * 0.075;
+        return vatPrice;
+       }
+
+public static double overAllTotal(double subTotal, double discountPrice, double vatPrice){
       double billTotal = subTotal - discountPrice + vatPrice;
+        return billTotal;
+
+ }       
+        
 
 
-        
-        
-        
+public static void toPrintAllReceipts(){        
 
         System.out.printf("""
 SEMICOLON STORES
@@ -113,7 +135,7 @@ System.out.printf(          """
                         
 
 ===========================================================
-   THIS IS  NOT AN RECEIPT KINDLY PAY:%.2f
+   THIS IS  NOT A RECEIPT KINDLY PAY:%.2f
 ===========================================================
 """,subTotal,discountPrice,vatPrice,billTotal,billTotal);
 
@@ -171,8 +193,8 @@ System.out.printf("""
 """,subTotal,discountPrice,vatPrice,billTotal, customerAmount, balance);
 
 
-
-
     }
+
+    
 
 }
