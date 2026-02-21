@@ -98,7 +98,7 @@ switch(bookOption){
                 System.out.print("\nWould You Like To Add More Books? Yes/No: ");
                 String moreBookResponse = obtain.nextLine();
                     count++;
-                if(moreBookResponse.equalsIgnoreCase("No")){
+                if(moreBookResponse.equalsIgnoreCase("No")){-
                   System.out.printf("\nThank You For Using Our Suggestion System App\n%d Books Were Added Successfully!\n",count);
                     break;}
 
