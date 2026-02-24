@@ -6,7 +6,7 @@ public class Task2{
 
         Scanner obtain = new Scanner(System.in);
 
-            System.out.print("Enter An Integer");
+            System.out.println("Enter An Integer");
 
                 int numbers = obtain.nextInt();
              
