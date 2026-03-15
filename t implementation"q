@@ -1,0 +1,192 @@
+[33mcommit e7a39563321e9424e45318374f0f56edab2da844[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: WisdomAvan <codedplanet54113@gmail.com>
+Date:   Fri Mar 6 19:46:27 2026 +0100
+
+    Add population variance and variance test implementation
+
+[1mdiff --git a/MIN- STATISTIC- APP/PopulationVariance.java b/MIN- STATISTIC- APP/PopulationVariance.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..15e78c6[m
+[1m--- /dev/null[m
+[1m+++ b/MIN- STATISTIC- APP/PopulationVariance.java[m	
+[36m@@ -0,0 +1,82 @@[m
+[32m+[m[32mpublic class PopulationVariance{[m
+[32m+[m
+[32m+[m[32m    public static int getTheAdditionOfNumbersOfAnArray(int []scoreOfStudents){[m
+[32m+[m
+[32m+[m[32m        int sumOfScores =0;[m
+[32m+[m
+[32m+[m[32m        for(int score : scoreOfStudents){[m
+[32m+[m[41m        [m
+[32m+[m[32m            sumOfScores += score;[m[41m        [m
+[32m+[m
+[32m+[m[32m        }[m
+[32m+[m[32m        return sumOfScores;[m[41m   [m
+[32m+[m[32m }[m
+[32m+[m
+[32m+[m[32m    public static double getTheAverageOfNumbersOfAnArray(int [] scoreOfStudents){[m
+[32m+[m
+[32m+[m[41m        [m
+[32m+[m[32m            double sumOfScores = (double)getTheAdditionOfNumbersOfAnArray(scoreOfStudents);[m
+[32m+[m
+[32m+[m[32m            double average = sumOfScores/scoreOfStudents.length;[m
+[32m+[m[32m        return Double.valueOf(String.format("%.2f", average));[m
+[32m+[m
+[32m+[m[41m    [m
+[32m+[m[32m    }[m
+[32m+[m[41m    [m
+[32m+[m[32m    public static double getTheSumOfSquaredDifferenceOfAnArray(int [] scoreOfStudents){[m
+[32m+[m
+[32m+[m[32m            double summationOfNumbers =0;[m
+[32m+[m
+[32m+[m[32m        for(int score : scoreOfStudents){[m
+[32m+[m
+[32m+[m[32m            double sumOfNumbers = score - getTheAverageOfNumbersOfAnArray(scoreOfStudents);[m
+[32m+[m
+[32m+[m[32m                summationOfNumbers += (sumOfNumbers * sumOfNumbers);[m
+[32m+[m
+[32m+[m[32m        }[m
+[32m+[m[32m        return summationOfNumbers;[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    public static double getTheVarainceOfAnArray(int [] scoreOfStudents){[m
+[32m+[m
+[32m+[m[32m    double varianceOfAnArray = getTheSumOfSquaredDifferenceOfAnArray(scoreOfStudents)/scoreOfStudents.length;[m
+[32m+[m
+[32m+[m[32m    return Double.valueOf(String.format("%.2f",varianceOfAnArray));[m
+[32m+[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    public static double getTheSquareRootOfANumber(double number){[m
+[32m+[m
+[32m+[m[32m        double squareNumber =0.0;[m
+[32m+[m[32m        double count=0.0;[m
+[32m+[m
+[32m+[m[32m        for(;squareNumber < number ; ){[m
+[32m+[m
+[32m+[m[32m              squareNumber += (count * count);[m[41m  [m
+[32m+[m[32m                    count++;[m
+[32m+[m[32m          }[m
+[32m+[m[32m              if ((count * count) != number){[m
+[32m+[m
+[32m+[m[32m                    int counter =1;[m
+[32m+[m
+[32m+[m[32m                for(; counter <= 3 && count <= number; ){[m
+[32m+[m[41m               [m
+[32m+[m[32m                    count =0.5 * (count + (number / count));[m
+[32m+[m[32m                        counter++;[m
+[32m+[m[41m               [m
+[32m+[m[32m              }[m[41m            [m
+[32m+[m[32m                    String stringCount = String.format("%.2f", count);[m
+[32m+[m[32m                    return Double.valueOf(stringCount);[m
+[32m+[m[32m            }[m
+[32m+[m[32m             return Double.valueOf(String.format("%.2f", count));[m[41m   [m
+[32m+[m[32m        }[m
+[32m+[m
+[32m+[m[32m      public static double getTheStandardDeviation(int [] scoreOfStudents){[m
+[32m+[m
+[32m+[m[32m        double variancevalue = getTheVarainceOfAnArray(scoreOfStudents);[m
+[32m+[m
+[32m+[m[32m            double ValueOfStandardDeviation = getTheSquareRootOfANumber(variancevalue);[m
+[32m+[m[32m         return ValueOfStandardDeviation;[m
+[32m+[m[32m        }[m[41m  [m
+[32m+[m[41m        [m
+[32m+[m[32m}[m
+[1mdiff --git a/MIN- STATISTIC- APP/VarianceTest.java b/MIN- STATISTIC- APP/VarianceTest.java[m
+[1mnew file mode 100644[m
+[1mindex 0000000..ed6807c[m
+[1m--- /dev/null[m
+[1m+++ b/MIN- STATISTIC- APP/VarianceTest.java[m	
+[36m@@ -0,0 +1,92 @@[m
+[32m+[m[32mimport org.junit.jupiter.api.Test;[m
+[32m+[m[32mimport static org.junit.jupiter.api.Assertions.assertTrue;[m
+[32m+[m[32mimport static org.junit.jupiter.api.Assertions.assertFalse;[m
+[32m+[m[32mimport static org.junit.jupiter.api.Assertions.assertEquals;[m
+[32m+[m
+[32m+[m
+[32m+[m[32mpublic class VarianceTest{[m
+[32m+[m
+[32m+[m
+[32m+[m[32m    @Test[m
+[32m+[m
+[32m+[m[32m    public void checkForTheAdditionOfNumber(){[m
+[32m+[m
+[32m+[m[32m        int [] scoreOfStudents = {2,5,3};[m
+[32m+[m[41m        [m
+[32m+[m[32m        int actual = PopulationVariance.getTheAdditionOfNumbersOfAnArray(scoreOfStudents);[m
+[32m+[m[32m        int expected =10;[m
+[32m+[m
+[32m+[m[32m    assertEquals(actual,expected);[m
+[32m+[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m
+[32m+[m[32m    @Test[m
+[32m+[m[32m    public void checkForTheAverageOfNumbers(){[m
+[32m+[m
+[32m+[m[32m        int [] scoreOfStudents = {2,5,3};[m
+[32m+[m[32m        double actualAverage = PopulationVariance.getTheAverageOfNumbersOfAnArray(scoreOfStudents);[m
+[32m+[m[32m        double expectedAverage = 3.33;[m
+[32m+[m
+[32m+[m[32m    assertEquals(actualAverage,expectedAverage);[m[41m    [m
+[32m+[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m
+[32m+[m[32m    @Test[m
+[32m+[m[32m    public void checkForTheSumOfASquareDifferenceOfNumbers(){[m
+[32m+[m
+[32m+[m[32m        int [] scoreOfStudents = {2,5,3};[m
+[32m+[m
+[32m+[m[32m        double actualSumOfASquaredDifference= PopulationVariance.getTheSumOfSquaredDifferenceOfAnArray(scoreOfStudents);[m
+[32m+[m[41m        [m
+[32m+[m[32m        double expectedSumOfASquaredDifference = 4.67;[m
+[32m+[m
+[32m+[m[32m    assertEquals(actualSumOfASquaredDifference,expectedSumOfASquaredDifference,0.01);[m
+[32m+[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m
+[32m+[m[32m    @Test[m
+[32m+[m[32m    public void checkForTheVarianceOfAnArray(){[m
+[32m+[m
+[32m+[m[32m        int [] scoreOfStudents = {2,5,3};[m
+[32m+[m
+[32m+[m[32m        double actaulOfVariance = PopulationVariance.getTheVarainceOfAnArray(scoreOfStudents)/scoreOfStudents.length;[m
+[32m+[m[41m        [m
+[32m+[m[32m        double expectedVariance = 0.52;[m
+[32m+[m[41m        [m
+[32m+[m[32m    assertEquals(expectedVariance, actaulOfVariance);[m
+[32m+[m
+[32m+[m
+[32m+[m[32m    }[m
+[32m+[m[41m    [m
+[32m+[m[32m    @Test[m
+[32m+[m[32m    public void testForSquareRoot(){[m
+[32m+[m[41m        [m
+[32m+[m[32m        int number = 9;[m
+[32m+[m[41m        [m
+[32m+[m[32m        double actualValue = PopulationVariance.getTheSquareRootOfANumber(number);[m
+[32m+[m[41m        [m
+[32m+[m[32m        double expectedValue =3;[m
+[32m+[m
+[32m+[m[32m        assertEquals(expectedValue , actualValue);[m
+[32m+[m[32m    }[m
+[32m+[m
+[32m+[m[32m    @Test[m
+[32m+[m[32m    public void testForTheStandardDeviationOfAnArray(){[m
+[32m+[m[41m    [m
+[32m+[m[32m        int [] scoreOfStudents = {2,5,3};[m
+[32m+[m
+[32m+[m[32m        double actualStandardDeviation =PopulationVariance.getTheSquareRootOfANumber(PopulationVariance.getTheVarainceOfAnArray(scoreOfStudents));[m
+[32m+[m[41m        [m
+[32m+[m[32m        double expectedStandardDeviation = 3.0;[m
+[32m+[m
+[32m+[m[32m        assertEquals(actualStandardDeviation ,expectedStandardDeviation,0.01);[m
+[32m+[m
+[32m+[m[32m     }[m
+[32m+[m
+[32m+[m[32m}[m
+[32m+[m
+[32m+[m
+[32m+[m

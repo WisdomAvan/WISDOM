@@ -12,6 +12,10 @@ public class VowelAndConstant{
                     int vowels=0;
                     char letter=0;
                     int consonants=0;
+
+        System.out.printf("Interest Rate \t   Monthly Payment \t Total Payment");
+
+
         for(int count =0; count < word.length(); count++){
         
              letter = word.charAt(count);
@@ -21,6 +25,8 @@ public class VowelAndConstant{
            }else{
                     consonants++;
         }
+
+
         }
                         System.out.printf("The Number of vowel is: %d\n", vowels);
                             

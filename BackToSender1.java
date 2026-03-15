@@ -55,7 +55,7 @@ public class BackToSender1{
                 
                 double percentageOfPackage = deliveredPackage/NUMBER_PERCENTAGE;
                 
-             if(percentageOfPackage >=0 || percentageOfPackage < 50){
+             if(percentageOfPackage >0 || percentageOfPackage <=50){
                 payment =(deliveredPackage * 160) + BASE_PAY;
                             
                  System.out.print(payment);   
